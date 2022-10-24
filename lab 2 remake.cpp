@@ -106,7 +106,7 @@ int main()
 			{
 				system("cls");
 				Note.correctNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
-				delete N;
+				 delete N;
 				for (int i = 0; i < massive; i++)
 				{
 					N = new Notebook(Note.name);
