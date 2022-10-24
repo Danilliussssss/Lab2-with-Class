@@ -4,7 +4,7 @@ using namespace std;
 #include <iostream>
 #include <stdio.h>
 
-static  int NoteCounter;
+ static  int NoteCounter;
 class Notebook
 {
 public:

@@ -5,7 +5,7 @@ Processor::Processor()
 	GHz = 0;
 	name = "";
 }
-Processor::Processor(float GHz,string name)
+  Processor::Processor(float GHz,string name)
 {   
 	 this->GHz=GHz ;
 	this->name=name  ;
