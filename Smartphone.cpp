@@ -2,7 +2,7 @@
 #pragma warning(disable : 4996)
 Smartphone::Smartphone()
 {
-	mAh = 0;
+	 mAh = 0;
 	name = "";
 
 }
