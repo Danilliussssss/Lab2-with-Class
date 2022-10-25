@@ -39,7 +39,7 @@ void Smartphone::correct(int mAh,string name)
 	{
 		system("cls");
 		 cin.ignore(32767, '\n');
-		 printf("Введите название гаджета:");
+		 printf("1Введите название гаджета:");
 		 getline(cin, name);
 		this->name = name;
 	}

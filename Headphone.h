@@ -7,7 +7,7 @@ class Headphone
 {
 public:string name;
 	int mAh;
-  public:	Headphone();
+    public:	Headphone();
 public:	Headphone(int mAh, string name);
 public:void EnterHeadphone(int mAh, string name);
 public:void PrintHeadphone(int mAh, string name);

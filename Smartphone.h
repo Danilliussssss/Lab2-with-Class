@@ -5,7 +5,7 @@ using namespace std;
 #include <iostream>
 #include <stdio.h>
 static  int counter;
-class Smartphone
+ class Smartphone
 {
 public:string name;
 	int mAh;

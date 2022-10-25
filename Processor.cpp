@@ -5,15 +5,15 @@ Processor::Processor()
 	GHz = 0;
 	name = "";
 }
-  Processor::Processor(float GHz,string name)
+Processor::Processor(float GHz,string name)
 {   
 	 this->GHz=GHz ;
-	this->name=name  ;
+	 this->name=name  ;
 }
-void Processor::PrintProcessor(float GHz,string name)
-{ 
-	cout <<"\nЧастота процессора:           " << GHz;
-	cout <<"\nПроцессор:                    " <<  name;
+void Processor::PrintProcessor(float GHz, string name)
+{
+	 cout << "\nЧастота процессора:           " << GHz;
+	 cout << "\nПроцессор:                    " << name;
 }
 void Processor::EnterProcessor(float GHz, string name)
 {

@@ -7,15 +7,15 @@
 
 void printmenu()
 {
-	printf("Выберите категорию гаджетов:");
-	printf("\n1.Смартфоны\n2.Наушники\n3.Ноутбуки\n4.Выход\n");
+	 printf("Выберите категорию гаджетов:");
+	 printf("\n1.Смартфоны\n2.Наушники\n3.Ноутбуки\n4.Выход\n");
 }
 
 
 int main()
 {
 	int choose, massive;
-	setlocale(LC_ALL, "russian");
+	 setlocale(LC_ALL, "russian");
 	do {
 		system("cls");
 		printmenu();
@@ -56,9 +56,9 @@ int main()
 		}
 		else if (choose == 2)
 		{
-			system("cls");
+			 system("cls");
 			Headphone HEADPHONE;
-			printf("Введите данные своих наушников:\n");
+			 printf("Введите данные своих наушников:\n");
 			HEADPHONE.EnterHeadphone(HEADPHONE.mAh, HEADPHONE.name);
 			Headphone* A = nullptr;
 
@@ -69,7 +69,7 @@ int main()
 			}
 			A->PrintHeadphone(A->mAh, A->name);
 			int a;
-			printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
+			 printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
 			do {
 				scanf("%d", &a);
 			} while (a != 1 && a != 2);
@@ -106,7 +106,7 @@ int main()
 			{
 				system("cls");
 				Note.correctNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
-				 delete N;
+				delete N;
 				for (int i = 0; i < massive; i++)
 				{
 					N = new Notebook(Note.name);

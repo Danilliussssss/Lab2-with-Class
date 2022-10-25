@@ -13,3 +13,4 @@ public:	  void  PrintProcessor(float GHz, string name);
 public:void EnterProcessor(float GHz, string name);
 };
 
+1
