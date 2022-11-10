@@ -5,31 +5,33 @@ Headphone::Headphone()
 {
 	mAh = 0;
 	name = "";
-	
+
 }
 Headphone::Headphone(int mAh, string name) {
 	this->mAh = mAh;
 	this->name = name;
 	headcounter++;
 }
-void Headphone::EnterHeadphone(int mAh, string name)
+pair<int, string> Headphone::EnterHeadphone()
 {
 	printf("\nВведите объём батареи(mAh/ч):");
 	scanf("\n%d", &mAh);
 	cin.ignore(32767, '\n');
 	printf("Введите название гаджета:");
 	getline(cin, name);
-	this->mAh = mAh;
-	this->name = name;
-}
-void Headphone::PrintHeadphone(int mAh, string name)
+	pair<int, string >p;
+	p.first = mAh;
+	p.second = name;
+	return make_pair(mAh, name);
+}void Headphone::PrintHeadphone()
 {
 	printf("Объём батареи:                %d", mAh);
 	cout << "\nНазвание:                     " << name;
 	cout << "\nКол-во наушников:             " << headcounter;
-	
+
+
 }
-void Headphone::correctHeadphone(int mAh, string name)
+pair<int, string> Headphone::correctHeadphone(int mAh, string name)
 {
 	int n;
 
@@ -42,7 +44,7 @@ void Headphone::correctHeadphone(int mAh, string name)
 		cin.ignore(32767, '\n');
 		printf("Введите название гаджета:");
 		getline(cin, name);
-		this->name = name;
+
 	}
 	else if (n == 2)
 	{
@@ -50,13 +52,12 @@ void Headphone::correctHeadphone(int mAh, string name)
 		system("cls");
 		printf("\nВведите объём батареи(mAh/ч):");
 		scanf("\n%d", &mAh);
-		this->mAh = mAh;
 	}
 
+	return make_pair(mAh, name);
 }
 Headphone::~Headphone()
 {
 	headcounter = 0;
 }
 
-	

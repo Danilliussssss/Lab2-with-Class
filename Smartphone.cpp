@@ -2,7 +2,7 @@
 #pragma warning(disable : 4996)
 Smartphone::Smartphone()
 {
-	 mAh = 0;
+	mAh = 0;
 	name = "";
 
 }
@@ -11,24 +11,29 @@ Smartphone::Smartphone(int mAh, string name) {
 	this->name = name;
 	counter++;
 }
-void Smartphone::EnterSmartphone(int mAh,string name)
+pair<int, string>  Smartphone::EnterSmartphone()
 {
 	printf("\nВведите объём батареи(mAh/ч):");
 	scanf("\n%d", &mAh);
 	cin.ignore(32767, '\n');
 	printf("Введите название гаджета:");
-	getline(cin,name);
-    this->mAh = mAh;
-	this->name = name;}
+	getline(cin, name);
+	pair<int, string >p;
+	p.first = mAh;
+	p.second = name;
+	printf("Объём батареи:                %d", mAh);
+	cout << "\nНазвание:                     " << name;
+	return make_pair(mAh, name);
+}
 void Smartphone::printSmartphone()
 {
 
-	printf("Объём батареи:                %d",mAh);
-	cout <<"\nНазвание:                     "<< name;
-	cout <<"\nКол-во смартфонов:            "<< counter;
-	
+	printf("Объём батареи:                %d", mAh);
+	cout << "\nНазвание:                     " << name;
+	cout << "\nКол-во смартфонов:            " << counter;
+
 }
-void Smartphone::correct(int mAh,string name)
+pair<int, string> Smartphone::correct(int mAh, string name)
 {
 	int n;
 
@@ -38,22 +43,24 @@ void Smartphone::correct(int mAh,string name)
 	if (n == 1)
 	{
 		system("cls");
-		 cin.ignore(32767, '\n');
-		 printf("1Введите название гаджета:");
-		 getline(cin, name);
+		cin.ignore(32767, '\n');
+		printf("1Введите название гаджета:");
+		getline(cin, name);
 		this->name = name;
 	}
 	else if (n == 2)
 	{
-		
+
 		system("cls");
 		printf("\nВведите объём батареи(mAh/ч):");
-		scanf("\n%d", &mAh); 
+		scanf("\n%d", &mAh);
 		this->mAh = mAh;
+
 	}
-	
+	return make_pair(mAh, name);
 }
 Smartphone::~Smartphone()
 {
 	counter = 0;
 }
+

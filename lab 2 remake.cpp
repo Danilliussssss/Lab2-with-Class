@@ -3,43 +3,82 @@
 #include "Headphone.h"
 #include "NoteBook.h"
 #include "Smartphone.h"
-#include "Processor.h"
+
 
 void printmenu()
 {
-	  printf("Выберите категорию гаджетов:");
-	  printf("\n1.Смартфоны\n2.Наушники\n3.Ноутбуки\n4.Выход\n");
+	printf("Выберите категорию гаджетов:");
+	printf("\n1.Смартфоны\n2.Наушники\n3.Ноутбуки\n4.Выход\n");
 }
 
 
 int main()
 {
 	int choose, massive;
-	 setlocale(LC_ALL, "russian");
+	setlocale(LC_ALL, "russian");
 	do {
 		system("cls");
 		printmenu();
 		do
-		scanf("%d", &choose);
+			scanf("%d", &choose);
 		while (choose < 0 && choose>4);
 		if (choose == 1)
 		{
 			system("cls");
 			Smartphone SMARTPHONE;
-			printf("Введите данные своего смартфона:\n");
-			SMARTPHONE.EnterSmartphone(SMARTPHONE.mAh, SMARTPHONE.name);
-			Smartphone* A = nullptr;
-			Processor PROCESSOR;
-			PROCESSOR.EnterProcessor(PROCESSOR.GHz, PROCESSOR.name);
-			Processor* Process = nullptr;
-			printf("Введите кол-во гаджетов:");
+
+			printf("Введите данные вашего ноутбука:\n");
+			pair<int, string >p = SMARTPHONE.EnterSmartphone();
+			pair<int, string >v = SMARTPHONE.pr.EnterProcessor();
+			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
+			Smartphone* A = nullptr;
 			for (int i = 0; i < massive; i++) {
-				A = new Smartphone(SMARTPHONE.mAh, SMARTPHONE.name);
-				Process = new Processor(PROCESSOR.GHz, PROCESSOR.name);
+				A = new Smartphone(p.first, p.second);
+				A->pr.InitProcessor(v.first, v.second);
 			}
 			A->printSmartphone();
-			Process->PrintProcessor(Process->GHz, Process->name);
+			A->pr.PrintProcessor();
+			int f;
+			printf("\nРедактировать данные смартфона?\n1.Да\n2.Нет\n");
+			do {
+				scanf("%d", &f);
+			} while (f != 1 && f != 2);
+			if (f == 1)
+			{
+				delete A;
+				pair<int, string >a = SMARTPHONE.correct(p.first, p.second);
+
+
+				for (int i = 0; i < massive; i++)
+					A = new Smartphone(a.first, a.second);
+
+			}printf("\nРедактировать данные процессора?\n1.Да\n2.Нет\n");
+			do {
+				scanf("%d", &f);
+			} while (f != 1 && f != 2);
+			if (f == 1) {
+				pair<int, string >m = SMARTPHONE.pr.correctProcessor(v.first, v.second);
+				for (int i = 0; i < massive; i++)
+					A->pr.InitProcessor(m.first, m.second);
+			}
+			A->printSmartphone();
+			A->pr.PrintProcessor();
+		}
+		else if (choose == 2)
+		{
+			system("cls");
+			Headphone HEADPHONE;
+			printf("Введите данные своих наушников:\n");
+			pair<int, string >p = HEADPHONE.EnterHeadphone();
+
+			Headphone* A = nullptr;
+			printf("\nВведите кол-во гаджетов:");
+			scanf("%d", &massive);
+			for (int i = 0; i < massive; i++) {
+				A = new Headphone(p.first, p.second);
+			}
+			A->PrintHeadphone();
 			int a;
 			printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
 			do {
@@ -47,72 +86,56 @@ int main()
 			} while (a != 1 && a != 2);
 			if (a == 1)
 			{
-				SMARTPHONE.correct(SMARTPHONE.mAh, SMARTPHONE.name);
 				delete A;
-				for (int i = 0; i < massive; i++)
-					A = new Smartphone(SMARTPHONE.mAh, SMARTPHONE.name);
-				A->printSmartphone();
-			}
-		}
-		else if (choose == 2)
-		{
-			 system("cls");
-			Headphone HEADPHONE;
-			 printf("Введите данные своих наушников:\n");
-			HEADPHONE.EnterHeadphone(HEADPHONE.mAh, HEADPHONE.name);
-			Headphone* A = nullptr;
+				pair<int, string >a = HEADPHONE.correctHeadphone(p.first, p.second);
 
-			printf("Введите кол-во гаджетов:");
-			scanf("%d", &massive);
-			for (int i = 0; i < massive; i++) {
-				A = new Headphone(HEADPHONE.mAh, HEADPHONE.name);
-			}
-			A->PrintHeadphone(A->mAh, A->name);
-			int a;
-			 printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &a);
-			} while (a != 1 && a != 2);
-			if (a == 1)
-			{
-				HEADPHONE.correctHeadphone(HEADPHONE.mAh, HEADPHONE.name);
-				delete A;
 				for (int i = 0; i < massive; i++)
-					A = new Headphone(HEADPHONE.mAh, HEADPHONE.name);
-				A->PrintHeadphone(A->mAh, A->name);
+					A = new Headphone(a.first, a.second);
+				A->PrintHeadphone();
 			}
 		}
 		else if (choose == 3)
 		{
 			system("cls");
 			Notebook Note;
-			printf("Введите данные своего ноутбука:\n");
-			Notebook* N = nullptr;
-			Note.EnterNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
-			printf("Введите кол-во гаджетов:");
+
+			printf("Введите данные вашего ноутбука:\n");
+			pair<int, string >p = Note.EnterNotebook();
+			pair<int, string >v = Note.a.EnterVideoAdapter();
+			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
-			for (int i = 0; i < massive; i++)
-			{
-				N = new Notebook(Note.name);
-				N->SwipeNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
+			Notebook* A = new Notebook[massive];
+			for (int i = 0; i < massive; i++) {
+				A[i].SwipeNotebook(p.first, p.second);
+				A[i].a.InitVideoAdapter(v.first, v.second);
 			}
-			N->PrintNotebook(N->mAh, N->name, N->Video.names, N->Video.mHz);
-			int a;
-			printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
+			A->PrintNotebook();
+			A->a.PrintVideoAdapter();
+			int f;
+			printf("\nРедактировать данные ноутбука?\n1.Да\n2.Нет\n");
 			do {
-				scanf("%d", &a);
-			} while (a != 1 && a != 2);
-			if (a == 1)
+				scanf("%d", &f);
+			} while (f != 1 && f != 2);
+			if (f == 1)
 			{
-				system("cls");
-				Note.correctNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
-				delete N;
+				delete[] A;
+				pair<int, string >a = Note.correctNotebook(p.first, p.second);
+
+				Notebook* A = new Notebook[massive];
 				for (int i = 0; i < massive; i++)
-				{
-					N = new Notebook(Note.name);
-					N->SwipeNotebook(Note.mAh, Note.name, Note.Video.names, Note.Video.mHz);
-				}N->PrintNotebook(N->mAh, N->name, N->Video.names, N->Video.mHz);
-			}
+					A[i].SwipeNotebook(a.first, a.second);
+
+
+			}printf("\nРедактировать данные видеокарты?\n1.Да\n2.Нет\n");
+			do {
+				scanf("%d", &f);
+			} while (f != 1 && f != 2);
+			if (f == 1) {
+				pair<int, string >m = Note.a.correctVideoAdapter(v.first, v.second);
+				for (int i = 0; i < massive; i++)
+					A->a.InitVideoAdapter(m.first, m.second);
+			}	A->PrintNotebook();
+			A->a.PrintVideoAdapter();
 		}
 		else if (choose == 4)
 			return 0;
@@ -121,4 +144,5 @@ int main()
 	} while (choose != 4);
 }
 
-  
+
+

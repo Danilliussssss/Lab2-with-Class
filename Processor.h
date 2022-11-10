@@ -6,11 +6,10 @@ using namespace std;
 class Processor
 {
 public:float GHz;
-	string name;
-public:Processor() ;
-public:	 Processor(float GHz,string name);
-public:	  void  PrintProcessor(float GHz, string name);
-public:void EnterProcessor(float GHz, string name);
+	  string name;
+public:Processor();
+public:void InitProcessor(float GHz, string name);
+public:	  void  PrintProcessor();
+public:pair<int, string> EnterProcessor();
+public: pair<int, string> correctProcessor(int mAh, string name);
 };
-
-1

@@ -4,18 +4,17 @@ using namespace std;
 #include <malloc.h>
 #include <iostream>
 #include <stdio.h>
+#include"Processor.h"
 static  int counter;
- class Smartphone
+class Smartphone
 {
-public:string name;
+	string name;
 	int mAh;
-	
-public:Smartphone() ;
-	public:Smartphone(int mAh, string name);
-void printSmartphone();
-void EnterSmartphone(int mAh, string name);
-void correct(int mAh, string name);
-~Smartphone();
+public: Processor pr;
+public:Smartphone();
+public:Smartphone(int mAh, string name);
+	  void printSmartphone();
+	  pair<int, string>  EnterSmartphone();
+	  pair<int, string> correct(int mAh, string name);
+	  ~Smartphone();
 };
-
-

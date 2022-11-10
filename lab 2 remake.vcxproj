@@ -127,7 +127,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="ftgbth.cpp" />
     <ClCompile Include="Headphone.cpp" />
     <ClCompile Include="lab 2 remake.cpp" />
     <ClCompile Include="NoteBook.cpp" />
@@ -135,7 +134,6 @@
     <ClCompile Include="Smartphone.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ftgbth.h" />
     <ClInclude Include="Headphone.h" />
     <ClInclude Include="NoteBook.h" />
     <ClInclude Include="Processor.h" />
