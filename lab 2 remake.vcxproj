@@ -132,12 +132,14 @@
     <ClCompile Include="NoteBook.cpp" />
     <ClCompile Include="Processor.cpp" />
     <ClCompile Include="Smartphone.cpp" />
+    <ClCompile Include="VideoAdapter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Headphone.h" />
     <ClInclude Include="NoteBook.h" />
     <ClInclude Include="Processor.h" />
     <ClInclude Include="Smartphone.h" />
+    <ClInclude Include="VideoAdapter.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

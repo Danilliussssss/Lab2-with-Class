@@ -2,6 +2,7 @@
 using namespace std;
 #include <string>
 #include <iostream>
+static int Price;
 static  int headcounter;
 class Headphone
 {

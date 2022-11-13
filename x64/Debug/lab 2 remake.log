@@ -1,12 +1,2 @@
-﻿  Headphone.cpp
-  Processor.cpp
-C:\Users\Данил\source\repos\lab 2 remake\Processor.h(16,1): error C2059: синтаксическая ошибка: константа
-C:\Users\Данил\source\repos\lab 2 remake\Processor.cpp(4,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Данил\source\repos\lab 2 remake\Processor.cpp(4,1): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
-  Smartphone.cpp
-  lab 2 remake.cpp
-C:\Users\Данил\source\repos\lab 2 remake\Processor.h(16,1): error C2059: синтаксическая ошибка: константа
-C:\Users\Данил\source\repos\lab 2 remake\lab 2 remake.cpp(9,1): error C2143: синтаксическая ошибка: отсутствие ";" перед "{"
-C:\Users\Данил\source\repos\lab 2 remake\lab 2 remake.cpp(9,1): error C2447: {: отсутствует заголовок функции (возможно, используется формальный список старого типа)
-C:\Users\Данил\source\repos\lab 2 remake\lab 2 remake.cpp(21,3): error C3861: printmenu: идентификатор не найден
-  Создание кода...
+﻿  NoteBook.cpp
+  lab 2 remake.vcxproj -> C:\Users\Данил\Source\Repos\Lab2-with-Class\x64\Debug\lab 2 remake.exe

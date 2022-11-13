@@ -2,31 +2,31 @@
 #pragma warning(disable : 4996)
 Processor::Processor()
 {
-	GHz = 0;
+	TF = 0;
 	name = "";
 }
-void Processor::InitProcessor(float GHz, string name)
+void Processor::InitProcessor(float TF, string name)
 {
-	this->GHz = GHz;
+	this->TF = TF;
 	this->name = name;
 }
 void Processor::PrintProcessor()
 {
-	cout << "\nЧастота процессора:           " << GHz;
+	cout << "\nЧастота процессора:           " << TF;
 	cout << "\nПроцессор:                    " << name;
 }
 pair<int, string> Processor::EnterProcessor()
 {
 	printf("\nВведите частоту процессора:");
-	scanf("\n%f", &GHz);
+	scanf("\n%f", &TF);
 	cin.ignore(32767, '\n');
 	printf("Введите название процессора:");
 	getline(cin, name);
-	this->GHz = GHz;
+	this->TF = TF;
 	this->name = name;
-	return make_pair(GHz, name);
+	return make_pair(TF, name);
 }
-pair<int, string> Processor::correctProcessor(int GHz, string name)
+pair<int, string> Processor::correctProcessor(int TF, string name)
 {
 	int n;
 
@@ -44,10 +44,10 @@ pair<int, string> Processor::correctProcessor(int GHz, string name)
 	}
 	case 2:
 		printf("\nВведите частоту процессора:");
-		scanf("\n%d", &GHz);
-		this->GHz = GHz;
+		scanf("\n%d", &TF);
+		this->TF = TF;
 		break;
 
 	}
-	return make_pair(GHz, name);
+	return make_pair(TF, name);
 }

@@ -101,16 +101,17 @@ int main()
 
 			printf("Введите данные вашего ноутбука:\n");
 			pair<int, string >p = Note.EnterNotebook();
-			pair<int, string >v = Note.a.EnterVideoAdapter();
+			pair<int, string >v = Note.a.EnterVideo();
 			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
 			Notebook* A = new Notebook[massive];
 			for (int i = 0; i < massive; i++) {
 				A[i].SwipeNotebook(p.first, p.second);
-				A[i].a.InitVideoAdapter(v.first, v.second);
+				Notebook::Counter();
+				A[i].a.InitVideo(v.first, v.second);
 			}
 			A->PrintNotebook();
-			A->a.PrintVideoAdapter();
+			A->a.PrintVideo();
 			int f;
 			printf("\nРедактировать данные ноутбука?\n1.Да\n2.Нет\n");
 			do {
@@ -123,7 +124,10 @@ int main()
 
 				Notebook* A = new Notebook[massive];
 				for (int i = 0; i < massive; i++)
+				{
 					A[i].SwipeNotebook(a.first, a.second);
+					Notebook::Counter();
+				}
 
 
 			}printf("\nРедактировать данные видеокарты?\n1.Да\n2.Нет\n");
@@ -131,11 +135,12 @@ int main()
 				scanf("%d", &f);
 			} while (f != 1 && f != 2);
 			if (f == 1) {
-				pair<int, string >m = Note.a.correctVideoAdapter(v.first, v.second);
+				pair<int, string >m = Note.a.correctVideo(v.first, v.second);
+				
 				for (int i = 0; i < massive; i++)
-					A->a.InitVideoAdapter(m.first, m.second);
+					A[i].a.InitVideo(m.first, m.second);
 			}	A->PrintNotebook();
-			A->a.PrintVideoAdapter();
+			A->a.PrintVideo();
 		}
 		else if (choose == 4)
 			return 0;

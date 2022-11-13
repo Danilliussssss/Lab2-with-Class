@@ -9,11 +9,14 @@ Notebook::Notebook(string name)
 	this->name = name;
 
 }
-
+ void Notebook::Counter()
+{
+NoteCounter++;
+}
 void Notebook::SwipeNotebook(int mAh, string name) {
 	this->mAh = mAh;
 	this->name = name;
-	NoteCounter++;
+	
 }
 pair<int, string> Notebook::EnterNotebook()
 {
