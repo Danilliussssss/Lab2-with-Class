@@ -1,29 +1,23 @@
 
 #include "Headphone.h"
 #pragma warning(disable : 4996)
-Headphone::Headphone()
+Headphone::Headphone ()
 {
 	mAh = 0;
 	name = "";
 
 }
-Headphone::Headphone(int mAh, string name) {
-	this->mAh = mAh;
-	this->name = name;
-	headcounter++;
+Headphone::Headphone(int* mAh, string* name) {
+	this->mAh = *mAh;
+	this->name = *name;
+	
 }
-pair<int, string> Headphone::EnterHeadphone()
+int Headphone::operator++(int f)
 {
-	printf("\nВведите объём батареи(mAh/ч):");
-	scanf("\n%d", &mAh);
-	cin.ignore(32767, '\n');
-	printf("Введите название гаджета:");
-	getline(cin, name);
-	pair<int, string >p;
-	p.first = mAh;
-	p.second = name;
-	return make_pair(mAh, name);
-}void Headphone::PrintHeadphone()
+headcounter++;
+return headcounter;
+}
+void Headphone::PrintHeadphone()
 {
 	printf("Объём батареи:                %d", mAh);
 	cout << "\nНазвание:                     " << name;
@@ -31,7 +25,7 @@ pair<int, string> Headphone::EnterHeadphone()
 
 
 }
-pair<int, string> Headphone::correctHeadphone(int mAh, string name)
+pair<int, string> Headphone::correctHeadphone(int *mAh, string *name)
 {
 	int n;
 
@@ -43,7 +37,7 @@ pair<int, string> Headphone::correctHeadphone(int mAh, string name)
 		system("cls");
 		cin.ignore(32767, '\n');
 		printf("Введите название гаджета:");
-		getline(cin, name);
+		getline(cin, *name);
 
 	}
 	else if (n == 2)
@@ -54,10 +48,23 @@ pair<int, string> Headphone::correctHeadphone(int mAh, string name)
 		scanf("\n%d", &mAh);
 	}
 
-	return make_pair(mAh, name);
+	return make_pair(*mAh, *name);
 }
 Headphone::~Headphone()
 {
 	headcounter = 0;
 }
-
+int *Headphone::EntermAh()
+{
+	printf("\nВведите объём батареи(mAh/ч):");
+	scanf("\n%d", &mAh);
+	return &mAh;
+}
+string *Headphone::EnterName()
+{
+	cin.ignore(32767, '\n');
+	printf("Введите название гаджета:");
+	getline(cin, name);
+	string* n = &name;
+	return n;
+}

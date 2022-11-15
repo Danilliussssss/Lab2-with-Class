@@ -18,19 +18,17 @@ void Notebook::SwipeNotebook(int mAh, string name) {
 	this->name = name;
 	
 }
-pair<int, string> Notebook::EnterNotebook()
+pair<int, string> EnterNotebook(Notebook &N)
 {
 	printf("\nВведите объём батареи(mAh/ч):");
-	scanf("\n%d", &mAh);
-
+	scanf("\n%d", &N.mAh);
 	printf("Введите название гаджета:");
 	cin.ignore(32767, '\n');
-	getline(cin, name);
+	getline(cin, N.name);
 	pair<int, string >p;
-	p.first = mAh;
-	p.second = name;
-	return make_pair(mAh, name);
-
+	p.first = N.mAh;
+	p.second = N.name;
+	return make_pair(N.mAh, N.name);
 }
 void Notebook::PrintNotebook()
 {

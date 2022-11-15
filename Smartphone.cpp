@@ -9,7 +9,12 @@ Smartphone::Smartphone()
 Smartphone::Smartphone(int mAh, string name) {
 	this->mAh = mAh;
 	this->name = name;
-	counter++;
+	
+}
+int Smartphone::operator++()
+{
+counter++;
+return counter;
 }
 pair<int, string>  Smartphone::EnterSmartphone()
 {
@@ -44,7 +49,7 @@ pair<int, string> Smartphone::correct(int mAh, string name)
 	{
 		system("cls");
 		cin.ignore(32767, '\n');
-		printf("1Введите название гаджета:");
+		printf("Введите название гаджета:");
 		getline(cin, name);
 		this->name = name;
 	}
