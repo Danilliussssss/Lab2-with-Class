@@ -6,17 +6,18 @@ using namespace std;
 #include <stdio.h>
 #include"Processor.h"
 static  int counter;
+static int priceSmartphone;
 class Smartphone
 {
 	string name;
 	int mAh;
-	int price;
 public: Processor pr;
 public:Smartphone();
-public:Smartphone(int mAh, string name);
-	  int operator++();
-	  void printSmartphone();
+void InitSmartphone(int mAh, string name);
 	  pair<int, string>  EnterSmartphone();
-	  pair<int, string> correct(int mAh, string name);
+	  void  printSmartphone();
+	  static void PrintCounter();
+	  friend void Ctr(Smartphone A);
 	  ~Smartphone();
+	  
 };

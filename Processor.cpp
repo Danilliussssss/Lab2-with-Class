@@ -2,52 +2,53 @@
 #pragma warning(disable : 4996)
 Processor::Processor()
 {
-	TF = 0;
+	mHz = 0;
 	name = "";
 }
-void Processor::InitProcessor(float TF, string name)
+void Processor::InitProcessor(float mHZ, string Name,int K)
 {
-	this->TF = TF;
-	this->name = name;
+	mHz = mHZ;
+	name = Name;
+	k = K;
+}
+int Processor::operator++(int)
+{
+	int c = k;
+	k++;
+	return c;
+}
+int Processor::operator++()
+{
+	k++;
+	return k;
+}
+float* Processor::CreateCore(int k)
+{
+	return new float[k];
+}
+float& Processor::InitCore(float pointer)
+{
+	pointer = mHz;
+	return pointer;
 }
 void Processor::PrintProcessor()
 {
-	cout << "\nЧастота процессора:           " << TF;
-	cout << "\nПроцессор:                    " << name;
+	printf("\nЧастота процессора:               %f*%d",mHz,k);
+	cout <<"\nПроцессор:                        " << name;
+	
 }
-pair<int, string> Processor::EnterProcessor()
+pair<float, string> Processor::EnterProcessor()
 {
 	printf("\nВведите частоту процессора:");
-	scanf("\n%f", &TF);
+	scanf("\n%f", &mHz);
 	cin.ignore(32767, '\n');
 	printf("Введите название процессора:");
 	getline(cin, name);
-	this->TF = TF;
-	this->name = name;
-	return make_pair(TF, name);
+	return make_pair(mHz, name);
 }
-pair<int, string> Processor::correctProcessor(int TF, string name)
+int Processor::EnterCore()
 {
-	int n;
-
-	printf("1.Название\n2.Частота процессора\n");
-	printf("\nВыберите поле,которое хотите редактировать:");
-	scanf("%d", &n); system("cls");
-	switch (n)
-	{
-	case 1:
-	{
-		cin.ignore(32767, '\n');
-		printf("Введите название процессора:");
-		getline(cin, name);
-		this->name = name; break;
-	}
-	case 2:
-		printf("\nВведите частоту процессора:");
-		scanf("\n%d", &TF);
-		this->TF = TF;
-		break;
-
-	}
-	return make_pair(TF, name);
+	printf("Введите кол-во ядер процессора:");
+	scanf("%d", &k);
+	return k;
 }

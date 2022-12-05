@@ -5,11 +5,17 @@ using namespace std;
 
 class Processor
 {
-public:float TF;
+    float mHz;
 	  string name;
+	  int Core;
+	  int k;
 public:Processor();
-public:void InitProcessor(float TF, string name);
-public:	  void  PrintProcessor();
-public:pair<int, string> EnterProcessor();
-public: pair<int, string> correctProcessor(int mAh, string name);
+void InitProcessor(float mHZ, string name,int K);
+	  float* CreateCore(int k);
+	  int operator++(int);
+	  int operator++();
+	  float& InitCore(float pointer );
+  void  PrintProcessor();
+pair<float, string> EnterProcessor();
+int EnterCore();
 };

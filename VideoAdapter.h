@@ -3,15 +3,19 @@
 #include <iostream>
 #include <stdio.h>
 using namespace std;
+static int VideoCounter;
+static int VideoPrice;
 class VideoAdapter
 {
 	int TF;
 	string name;
 public:
 	VideoAdapter();
-	void InitVideo(int TF, string name);
+	void InitVideo(VideoAdapter A);
 	void PrintVideo();
-	pair<int, string> EnterVideo();
-	pair<int, string> correctVideo(int TF, string name);
+	VideoAdapter& EnterVideo();
+	void InitVideo(string name, int mAH);
+	
+	~VideoAdapter();
 };
 

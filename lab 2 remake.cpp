@@ -3,23 +3,28 @@
 #include "Headphone.h"
 #include "NoteBook.h"
 #include "Smartphone.h"
-
-
+#include <fstream>
 void printmenu()
 {
 	printf("Выберите категорию гаджетов:");
 	printf("\n1.Смартфоны\n2.Наушники\n3.Ноутбуки\n4.Выход\n");
 }
-
-
+void Ctr(Smartphone A)
+{
+	fstream F("Smartphone.txt", ios::out | ios::app);
+	F << A.name << "\n";
+	F << A.mAh;
+	F.close();
+}
 int main()
 {
-	int choose, massive;
 	
+	int choose, massive;
 	setlocale(LC_ALL, "russian");
 	do {
 		system("cls");
 		printmenu();
+		
 		do
 			scanf("%d", &choose);
 		while (choose < 0 && choose>4);
@@ -27,132 +32,77 @@ int main()
 		{
 			system("cls");
 			Smartphone SMARTPHONE;
-
-			printf("Введите данные вашего ноутбука:\n");
+			printf("Введите данные вашего смартфона:\n");
 			pair<int, string >p = SMARTPHONE.EnterSmartphone();//Ввод данных смартфона
-			pair<int, string >v = SMARTPHONE.pr.EnterProcessor();
+			pair<float, string >v = SMARTPHONE.pr.EnterProcessor();
+			int C=SMARTPHONE.pr.EnterCore();
+			C = C - 2; C++; ++C;
+			float* pointer = SMARTPHONE.pr.CreateCore(C);
+			for (int i = 0; i < C; i++)
+				SMARTPHONE.pr.InitCore(pointer[i]);
 			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
-			Smartphone* A = nullptr;
+			Smartphone* A = new Smartphone[massive];
 			for (int i = 0; i < massive; i++) {
-				A = new Smartphone(p.first, p.second);
-				++A[i];//Перегрузка оператора ++ без параметра(префиксный вариант)
-				A->pr.InitProcessor(v.first, v.second);
-			}
+					A[i].InitSmartphone(p.first, p.second);
+				A[i].pr.InitProcessor(v.first, v.second,C);
+			}Ctr(SMARTPHONE);
+			SMARTPHONE.~Smartphone();
+			
 			A->printSmartphone();
 			A->pr.PrintProcessor();
-			int f;
-			printf("\nРедактировать данные смартфона?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &f);
-			} while (f != 1 && f != 2);
-			if (f == 1)
-			{
-				delete A;
-				pair<int, string >a = SMARTPHONE.correct(p.first, p.second);
-
-
-				for (int i = 0; i < massive; i++)
-				{
-					A = new Smartphone(a.first, a.second);
-					++A[i];//Перегрузка оператора ++ без параметра(префиксный вариант)
-				}
-			}printf("\nРедактировать данные процессора?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &f);
-			} while (f != 1 && f != 2);
-			if (f == 1) {
-				pair<int, string >m = SMARTPHONE.pr.correctProcessor(v.first, v.second);
-				
-				for (int i = 0; i < massive; i++) {
-					A->pr.InitProcessor(m.first, m.second);
-					
-				}
-			}
-			A->printSmartphone();
-			A->pr.PrintProcessor();
+			Smartphone::PrintCounter(); int n;
+			printf("\nУдалить данные?\n1.Да\n2.Нет\n");
+			scanf("%d", &n);
+			if(n==1)
+			delete[] A;
+	
 		}
 		else if (choose == 2)
 		{
 			system("cls");
-			Headphone HEADPHONE; string* StringPointer; int* IntPointer;
+			Headphone HEADPHONE; 
 			printf("Введите данные своих наушников:\n"); 
-			IntPointer=  HEADPHONE.EntermAh();
-			StringPointer=HEADPHONE.EnterName();
-			Headphone* A = nullptr;
+			  pair<int, string>p=HEADPHONE.EnterHeadphone();
 			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
-			for (int i = 0; i < massive; i++) {
-				A = new Headphone(IntPointer, StringPointer);
-				A[i]++;
-			}
+			 Headphone* A = new Headphone[massive];
+			 for (int i = 0; i < massive; i++)
+				 A[i].InitHeadphone(p.first, p.second);
+			 HEADPHONE.~Headphone();
 			A->PrintHeadphone();
-			int a;
-			printf("\nРедактировать данные?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &a);
-			} while (a != 1 && a != 2);
-			if (a == 1)
-			{
-				delete A;
-				IntPointer = HEADPHONE.EntermAh();
-				StringPointer = HEADPHONE.EnterName();
-				
-				for (int i = 0; i < massive; i++)
-				{
-					A = new Headphone(IntPointer, StringPointer);
-				A[i]++;
-				}		
-				A->PrintHeadphone();
-			}
+			
+			int n;
+			printf("\nУдалить данные?\n1.Да\n2.Нет\n");
+			scanf("%d", &n);
+			if (n == 1)
+				delete[] A;
+			
 		}
 		else if (choose == 3)
 		{
 			system("cls");
 			Notebook Note;
-
 			printf("Введите данные вашего ноутбука:\n");
-			pair<int, string >p = EnterNotebook(Note);
-			pair<int, string >v = Note.a.EnterVideo();
+			pair<int, string >p = Note.EnterNotebook();
+			Note.a.EnterVideo();
 			printf("\nВведите кол-во гаджетов:");
 			scanf("%d", &massive);
 			Notebook* A = new Notebook[massive];
 			for (int i = 0; i < massive; i++) {
-				A[i].SwipeNotebook(p.first, p.second);
-				Notebook::Counter();
-				A[i].a.InitVideo(v.first, v.second);
+				A[i].InitNotebook( p.second,p.first);
+				A[i].a.InitVideo(Note.a);
 			}
+			Note.~Notebook();
 			A->PrintNotebook();
 			A->a.PrintVideo();
-			int f;
-			printf("\nРедактировать данные ноутбука?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &f);
-			} while (f != 1 && f != 2);
-			if (f == 1)
-			{
+			int n;
+			
+			printf("\nУдалить данные?\n1.Да\n2.Нет\n");
+			scanf("%d", &n);
+			if (n == 1)
 				delete[] A;
-				pair<int, string >a = Note.correctNotebook(p.first, p.second);
-
-				Notebook* A = new Notebook[massive];
-				for (int i = 0; i < massive; i++)
-				{
-					A[i].SwipeNotebook(a.first, a.second);
-					Notebook::Counter();
-				}
-
-
-			}printf("\nРедактировать данные видеокарты?\n1.Да\n2.Нет\n");
-			do {
-				scanf("%d", &f);
-			} while (f != 1 && f != 2);
-			if (f == 1) {
-				pair<int, string >m = Note.a.correctVideo(v.first, v.second);
-				
-				for (int i = 0; i < massive; i++)
-					A[i].a.InitVideo(m.first, m.second);
-			}	A->PrintNotebook();
-			A->a.PrintVideo();
+			
 		}
 		else if (choose == 4)
 			return 0;

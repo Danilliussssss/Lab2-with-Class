@@ -1,16 +1,2 @@
-﻿  Headphone.cpp
-C:\Users\Данил\source\repos\Lab2-with-Class\Headphone.cpp(48,9): warning C4477: "scanf": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "1" имеет тип "int **"
-  NoteBook.cpp
-  lab 2 remake.cpp
-C:\Users\Данил\source\repos\Lab2-with-Class\lab 2 remake.cpp(40,26): warning C4244: аргумент: преобразование "_Ty1" в "float", возможна потеря данных
-          with
-          [
-              _Ty1=int
-          ]
-C:\Users\Данил\source\repos\Lab2-with-Class\lab 2 remake.cpp(68,27): warning C4244: аргумент: преобразование "_Ty1" в "float", возможна потеря данных
-          with
-          [
-              _Ty1=int
-          ]
-  Создание кода...
+﻿  lab 2 remake.cpp
   lab 2 remake.vcxproj -> C:\Users\Данил\source\repos\Lab2-with-Class\x64\Debug\lab 2 remake.exe

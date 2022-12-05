@@ -3,68 +3,50 @@
 #pragma warning(disable : 4996)
 Headphone::Headphone ()
 {
-	mAh = 0;
-	name = "";
 
-}
-Headphone::Headphone(int* mAh, string* name) {
-	this->mAh = *mAh;
-	this->name = *name;
-	
-}
-int Headphone::operator++(int f)
-{
 headcounter++;
-return headcounter;
+}
+void Headphone::InitHeadphone(int mAH,string Name)
+{
+	mAh = mAH;
+	name = Name;
 }
 void Headphone::PrintHeadphone()
 {
 	printf("Объём батареи:                %d", mAh);
 	cout << "\nНазвание:                     " << name;
 	cout << "\nКол-во наушников:             " << headcounter;
+}
+Headphone Headphone::operator++(int)
+{
 
+	Headphone New = *this;
+	return *this;
 
 }
-pair<int, string> Headphone::correctHeadphone(int *mAh, string *name)
+Headphone Headphone::operator++()
 {
-	int n;
 
-	printf("1.Название\n2.Объём батареи\n");
-	printf("Выберите поле,которое хотите редактировать:");
-	scanf("%d", &n);
-	if (n == 1)
-	{
-		system("cls");
-		cin.ignore(32767, '\n');
-		printf("Введите название гаджета:");
-		getline(cin, *name);
+	Headphone New = *this;
+	return New;
 
-	}
-	else if (n == 2)
-	{
-
-		system("cls");
-		printf("\nВведите объём батареи(mAh/ч):");
-		scanf("\n%d", &mAh);
-	}
-
-	return make_pair(*mAh, *name);
 }
 Headphone::~Headphone()
 {
-	headcounter = 0;
+	headcounter--;
 }
-int *Headphone::EntermAh()
+ pair<int,string> Headphone::EnterHeadphone()
 {
 	printf("\nВведите объём батареи(mAh/ч):");
 	scanf("\n%d", &mAh);
-	return &mAh;
-}
-string *Headphone::EnterName()
-{
 	cin.ignore(32767, '\n');
 	printf("Введите название гаджета:");
 	getline(cin, name);
-	string* n = &name;
-	return n;
+	pair<int, string >p;
+	p.first = mAh;
+	p.second = name;
+	return make_pair(mAh, name);
+	
 }
+ 
+ 
