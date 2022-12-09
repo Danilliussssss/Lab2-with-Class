@@ -2,7 +2,7 @@
 using namespace std;
 #include <string>
 #include <iostream>
-static  int headcounter;
+static  int headcounter=0;
 class Headphone
 {
 	
@@ -14,6 +14,7 @@ void InitHeadphone(int mAH, string Name);
 Headphone operator++(int);
 Headphone operator++();
 void PrintHeadphone();
+friend void FileForHeadphone(Headphone A);
 ~Headphone();
 
 

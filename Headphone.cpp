@@ -13,9 +13,8 @@ void Headphone::InitHeadphone(int mAH,string Name)
 }
 void Headphone::PrintHeadphone()
 {
-	printf("Объём батареи:                %d", mAh);
 	cout << "\nНазвание:                     " << name;
-	cout << "\nКол-во наушников:             " << headcounter;
+	printf("\nОбъём батареи:                %d", mAh);
 }
 Headphone Headphone::operator++(int)
 {
@@ -37,16 +36,15 @@ Headphone::~Headphone()
 }
  pair<int,string> Headphone::EnterHeadphone()
 {
-	printf("\nВведите объём батареи(mAh/ч):");
-	scanf("\n%d", &mAh);
-	cin.ignore(32767, '\n');
-	printf("Введите название гаджета:");
-	getline(cin, name);
-	pair<int, string >p;
-	p.first = mAh;
-	p.second = name;
-	return make_pair(mAh, name);
-	
+		 printf("\nВведите объём батареи(mAh/ч):");
+		 scanf("\n%d", &mAh);
+		 cin.ignore(32767, '\n');
+		 printf("Введите название гаджета:");
+		 getline(cin, name); 
+			 pair<int, string >p;
+			 p.first = mAh;
+			 p.second = name;
+			 return make_pair(mAh, name);
 }
- 
+
  

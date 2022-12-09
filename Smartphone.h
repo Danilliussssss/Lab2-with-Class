@@ -6,7 +6,6 @@ using namespace std;
 #include <stdio.h>
 #include"Processor.h"
 static  int counter;
-static int priceSmartphone;
 class Smartphone
 {
 	string name;
@@ -17,7 +16,7 @@ void InitSmartphone(int mAh, string name);
 	  pair<int, string>  EnterSmartphone();
 	  void  printSmartphone();
 	  static void PrintCounter();
-	  friend void Ctr(Smartphone A);
+	  friend void FileForSmartphone(Smartphone A);
 	  ~Smartphone();
 	  
 };

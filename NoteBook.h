@@ -18,6 +18,7 @@ void InitNotebook(string Name, int mAH);
   ~Notebook();
 	pair<int, string> EnterNotebook();
 	  void PrintNotebook();
+	  friend void FileForNotebook(Notebook A);
 	  
 };
 
