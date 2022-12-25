@@ -5,18 +5,17 @@ using namespace std;
 #include <iostream>
 #include <stdio.h>
 #include"Processor.h"
-static  int counter;
-class Smartphone
+#include"Gadget.h"
+
+class Smartphone  :public Gadget
 {
-	string name;
-	int mAh;
-public: Processor pr;
-public:Smartphone();
-void InitSmartphone(int mAh, string name);
-	  pair<int, string>  EnterSmartphone();
-	  void  printSmartphone();
-	  static void PrintCounter();
-	  friend void FileForSmartphone(Smartphone A);
-	  ~Smartphone();
-	  
+protected :
+	int Hz;
+	string TypeScreen;
+public:
+	Smartphone() = default;
+Processor pr;
+pair<string, int> EnterSmartphone();
+void PrintSmartphone();
+void InitSmartphone(Smartphone& S);
 };

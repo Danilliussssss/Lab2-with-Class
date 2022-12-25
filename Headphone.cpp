@@ -1,50 +1,29 @@
 
 #include "Headphone.h"
 #pragma warning(disable : 4996)
-Headphone::Headphone ()
+pair<string, int> Headphone::EnterHeadphone()
 {
-
-headcounter++;
+	Gadget::Enter();
+	cin.ignore(32767, '\n');
+	printf("Введите цвет:");
+	getline(cin, Color);
+	printf("\nВведите радиус действия:");
+	scanf("\n%d", &Radius);
+	return make_pair(Color, Radius);
 }
-void Headphone::InitHeadphone(int mAH,string Name)
+void Headphone::InitHeadphone(Headphone& H)
 {
-	mAh = mAH;
-	name = Name;
+	InitGadget(H.mAh, H.name);
+	Radius = H.Radius;
+	Color = H.Color;
 }
-void Headphone::PrintHeadphone()
+void Headphone::Print()
 {
-	cout << "\nНазвание:                     " << name;
-	printf("\nОбъём батареи:                %d", mAh);
-}
-Headphone Headphone::operator++(int)
-{
-
-	Headphone New = *this;
-	return *this;
-
-}
-Headphone Headphone::operator++()
-{
-
-	Headphone New = *this;
-	return New;
-
-}
-Headphone::~Headphone()
-{
-	headcounter--;
-}
- pair<int,string> Headphone::EnterHeadphone()
-{
-		 printf("\nВведите объём батареи(mAh/ч):");
-		 scanf("\n%d", &mAh);
-		 cin.ignore(32767, '\n');
-		 printf("Введите название гаджета:");
-		 getline(cin, name); 
-			 pair<int, string >p;
-			 p.first = mAh;
-			 p.second = name;
-			 return make_pair(mAh, name);
+	Gadget::Print();
+	cout << "\nЦвет:                         " << Color;
+	printf("\nРадиус действия:              %d\n", Radius);
 }
 
+
+ 
  

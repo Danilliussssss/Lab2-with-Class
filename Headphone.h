@@ -1,22 +1,19 @@
 #pragma once
-using namespace std;
+#include "Gadget.h"
+
 #include <string>
 #include <iostream>
-static  int headcounter=0;
-class Headphone
+using namespace std;
+class Headphone:public Gadget
 {
+protected:
+	int Radius;
+	string Color;
+public:
+	Headphone()=default;
+	pair<string, int> EnterHeadphone();
+	void InitHeadphone(Headphone &H);
+	void Print() override;
 	
-	string name;
-	int mAh;
-public:	Headphone();
-pair<int, string> EnterHeadphone();
-void InitHeadphone(int mAH, string Name);
-Headphone operator++(int);
-Headphone operator++();
-void PrintHeadphone();
-friend void FileForHeadphone(Headphone A);
-~Headphone();
-
-
 };
 

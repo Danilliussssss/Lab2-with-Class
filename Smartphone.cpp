@@ -1,42 +1,25 @@
 #include "Smartphone.h"
 #pragma warning(disable : 4996)
-Smartphone::Smartphone()
+pair<string, int> Smartphone::EnterSmartphone() 
 {
-counter++;
-}
-void Smartphone::InitSmartphone(int mAH, string Name) {
-	mAh = mAH;
-	name = Name;
-	
-}
-pair<int, string>  Smartphone::EnterSmartphone()
-{
-	printf("\nВведите объём батареи(mAh/ч):");
-	scanf("\n%d", &mAh);
+	Gadget::Enter();
 	cin.ignore(32767, '\n');
-	printf("Введите название гаджета:");
-	getline(cin, name);
-	printf("Объём батареи:                %d", mAh);
-	cout << "\nНазвание:                     " << name;
-	pair<int, string >p;
-	p.first = mAh;
-	p.second = name;
-	return make_pair(mAh, name);
+	printf("Введите тип экрана:");
+	getline(cin, TypeScreen);
+	printf("\nВведите частоту обновления:");
+	scanf("\n%d", &Hz);
+	return make_pair(TypeScreen, Hz);
 }
-void Smartphone::printSmartphone()
+void Smartphone::PrintSmartphone()
 {
-
-	printf("Объём батареи:                    %d", mAh);
-	cout << "\nНазвание:                         " << name;
-	
+	Print();
+	cout << "\nТип экрана:                   " << TypeScreen;
+	printf("\nЧастота обновления:            %d\n", Hz);
 }
-void Smartphone::PrintCounter()
+void Smartphone::InitSmartphone(Smartphone& S)
 {
-cout << "\nКол-во смартфонов:                " << counter;
-
-}
-Smartphone::~Smartphone()
-{
-	counter--;
+	InitGadget(S.mAh, S.name);
+	TypeScreen = S.TypeScreen;
+	Hz = S.Hz;
 }
 

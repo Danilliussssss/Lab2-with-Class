@@ -1,24 +1,24 @@
 #pragma once
-using namespace std;
-#include"VideoAdapter.h"
+
+#include "Processor.h"
+#include "VideoAdapter.h"
+#include "Gadget.h"
 #include <string>
 #include <iostream>
 #include <stdio.h>
+using namespace std;
 
-
-static  int NoteCounter;
-class Notebook
+class Notebook:public  Gadget
 {
-	string name;
-	int mAh;
+protected:
+	string ColorKeyboard;
+	int Inch;
 public:
 	VideoAdapter a;
-Notebook() ;
-void InitNotebook(string Name, int mAH);
-  ~Notebook();
-	pair<int, string> EnterNotebook();
-	  void PrintNotebook();
-	  friend void FileForNotebook(Notebook A);
+	pair<string,int> EnterNotebook();
+	void PrintNotebook();
+	void InitGadget(Notebook N);
+	friend void FileForGadget(Gadget A);
 	  
 };
 

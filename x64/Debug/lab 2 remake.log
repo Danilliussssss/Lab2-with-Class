@@ -1,2 +1,3 @@
 ﻿  lab 2 remake.cpp
+C:\Users\Данил\source\repos\Lab2-with-Class\lab 2 remake.cpp(77,18): warning C4930: Smartphone PrintCounter(void): функция с прототипом не вызвана (предполагалось определение переменной?)
   lab 2 remake.vcxproj -> C:\Users\Данил\source\repos\Lab2-with-Class\x64\Debug\lab 2 remake.exe

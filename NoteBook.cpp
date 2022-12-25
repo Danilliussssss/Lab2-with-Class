@@ -1,35 +1,24 @@
 #include "NoteBook.h"
 #pragma warning(disable : 4996)
-Notebook::Notebook()
+pair<string, int>Notebook::EnterNotebook()
 {
-NoteCounter++;
-}
-void Notebook::InitNotebook(string Name, int mAH)
-{
-	name = Name;
-	mAh = mAH;
+	Gadget::Enter();
+	cin.ignore(32767, '\n');
+	printf("Введите цвет клавиатуры:");
+	getline(cin, ColorKeyboard);
+	printf("\nВведите диагональ экрана(в дюймах):");
+	scanf("\n%d", &Inch);
+	return make_pair(ColorKeyboard, Inch);
 	
 }
-pair<int, string> Notebook::EnterNotebook()
+void Notebook::InitGadget(Notebook N)
 {
-	printf("\nВведите объём батареи(mAh/ч):");
-	scanf("\n%d", &mAh);
-	printf("Введите название гаджета:");
-	cin.ignore(32767, '\n');
-	getline(cin, name);
-	pair<int, string >p;
-	p.first = mAh;
-	p.second = name;
-	return make_pair(mAh, name);
+	Gadget::InitGadget(N.mAh,N.name);
+	ColorKeyboard = N.ColorKeyboard;
+	Inch = N.Inch;
 }
 void Notebook::PrintNotebook()
 {
-	printf("Объём батареи:                  %d", mAh);
-	cout << "\nНазвание:                       " << name;
-	cout << "\nКол-во ноутбуков:               " << NoteCounter;
+	cout << "\nЦвет клавиатуры:                     " << name;
+	printf("\nДиагональ экрана(в дюймах):          %d\n", mAh);
 }
-Notebook::~Notebook()
-{
-	NoteCounter--;
-}
-

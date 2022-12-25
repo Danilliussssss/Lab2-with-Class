@@ -14,7 +14,6 @@ public:
 	void InitVideo(VideoAdapter A);
 	void PrintVideo();
 	VideoAdapter& EnterVideo();
-	void InitVideo(string name, int mAH);
 	
 	~VideoAdapter();
 };

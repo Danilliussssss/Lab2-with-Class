@@ -33,8 +33,8 @@ float& Processor::InitCore(float pointer)
 }
 void Processor::PrintProcessor()
 {
-	printf("\nЧастота процессора:               %f*%d",mHz,k);
-	cout <<"\nПроцессор:                        " << name;
+	printf("\nЧастота процессора:           %f*%d",mHz,k);
+	cout <<"\nПроцессор:                    " << name;
 	
 }
 pair<float, string> Processor::EnterProcessor()
